@@ -19,6 +19,9 @@ body {
 
 .sub-container {
     display: flex;
+    height: 45px;
+    width: 222px;
+    justify-content: space-between;
 
     /* padding: 6px; */
     border: 1px solid black;
@@ -34,6 +37,10 @@ body {
     color: blue;
     padding-right: 4px ;
     border: 1px solid black;
+}
+
+.sub-container.last {
+    justify-content: center;
 }
 
 
