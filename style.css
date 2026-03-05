@@ -1,1 +1,48 @@
 /* index.html */
+body {
+    margin: 12px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.casing-calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px solid black;
+    height: 390px;
+    width: 270px;
+}
+
+.sub-container {
+    display: flex;
+
+    /* padding: 6px; */
+    border: 1px solid black;
+}
+/* Screen */
+.sub-container.screen {
+    display: flex;
+    height: 40px;
+    width: 210px;
+    justify-content: end;
+    align-items: center;
+    font-size: 32px;
+    color: blue;
+    padding-right: 4px ;
+    border: 1px solid black;
+}
+
+
+button {
+    height: 40px;
+    width: 40px;
+    margin: 3.6px;
+}
+button.ac {
+    justify-items: end;
+    background-color: rgb(204, 204, 218);
+}
