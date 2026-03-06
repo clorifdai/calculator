@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Calculator</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="casing-calculator">
         <div class="sub-container screen" >
-            <div class=" screen-my">0</div>
+            <div class=" screen-my" id="display">0</div>
         </div>
         <div class="sub-container">
             <button class="num">0</button>
@@ -39,7 +39,7 @@
             <button class="Add">+</button>
         </div>
             <div class="sub-container last">
-            <button class="num ac">AC</button>
+            <button class="ac">AC</button>
             <!-- <button class="num">.</button>
             <button class="num">=</button>
             <button class="num">+</button> -->
