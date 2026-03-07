@@ -7,7 +7,8 @@ let ac = document.querySelector(".ac");
 let screen = document.querySelector(".screen-my");
 let opt = document.querySelectorAll(".operator");
 let equal = document.querySelector("#equal"); 
-
+let decimal = document.querySelector("#decimal");
+console.log(decimal)
 let numCurrent = "";
 let first = null;
 let second = null;
@@ -28,6 +29,8 @@ function buttonNum () {
                 resetScreen = false;
             };
 
+            // hitung karakter .
+            
             appendNumber(button.innerHTML);
             numCurrent += button.textContent
             console.log(button.innerHTML);
@@ -39,8 +42,28 @@ function buttonNum () {
         });
 
     };
-    
+    decimalKu()
 }
+
+function decimalKu () {
+    decimal.addEventListener("click", () => {
+        // if (countOccurrences(screen.textContent, ".") <= 1) {
+        //     screen.textContent += decimal.InnerHTML;
+        // };
+        if (!screen.textContent.includes(".")){
+            appendNumber(decimal.textContent)
+            numCurrent += decimal.textContent
+            console.log(decimal.innerHTML);
+            if (first !== null) {
+                console.log("buttonNun second")
+                numCurrentSecond += decimal.innerHTML;
+                screen.textContent = numCurrentSecond
+            }                
+        }
+        console.log("desimal dipanggil");
+
+    });
+};
 
 console.log("first", first)
 // Pertama memasukkan nomer ke layar
@@ -51,7 +74,11 @@ console.log("first", first)
 // deteksi angka ini lalu masukkan ke variabel belakang
 // operator()
 
-
+// FUngsi menghitung karakter titik
+function countOccurrences(str, char) {
+  return [...str].reduce((count, currentChar) =>
+    currentChar === char ? count + 1 : count, 0);
+}
 
 function operatorButton() {
     for (let i = 0; i < opt.length; i++) {
@@ -145,4 +172,5 @@ ac.addEventListener("click", () => {
 })
 
 buttonNum()
+// decimal()
 operatorButton()
