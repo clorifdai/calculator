@@ -1,14 +1,12 @@
 // index.html
 
-
-
 let buttons = document.querySelectorAll(".num");
 let ac = document.querySelector(".ac");
 let screen = document.querySelector(".screen-my");
 let opt = document.querySelectorAll(".operator");
 let equal = document.querySelector("#equal"); 
 let decimal = document.querySelector("#decimal");
-console.log(decimal)
+
 let numCurrent = "";
 let first = null;
 let second = null;
@@ -18,7 +16,6 @@ let resetScreen = false;
 let numCurrentSecond = '';
 
 // Detect number button
-
 function buttonNum () {
     for (let i = 0 ; i < buttons.length; i++) {
         let button = buttons [i];
@@ -28,12 +25,9 @@ function buttonNum () {
                 numCurrent = null;
                 resetScreen = false;
             };
-
-            // hitung karakter .
             
             appendNumber(button.innerHTML);
             numCurrent += button.textContent
-            console.log(button.innerHTML);
             if (first !== null) {
                 console.log("buttonNun second")
                 numCurrentSecond += button.innerHTML;
@@ -42,48 +36,26 @@ function buttonNum () {
         });
 
     };
-    decimalKu()
 }
 
-function decimalKu () {
+function decimalButton () {
     decimal.addEventListener("click", () => {
-        // if (countOccurrences(screen.textContent, ".") <= 1) {
-        //     screen.textContent += decimal.InnerHTML;
-        // };
         if (!screen.textContent.includes(".")){
             appendNumber(decimal.textContent)
             numCurrent += decimal.textContent
-            console.log(decimal.innerHTML);
             if (first !== null) {
-                console.log("buttonNun second")
                 numCurrentSecond += decimal.innerHTML;
                 screen.textContent = numCurrentSecond
             }                
         }
-        console.log("desimal dipanggil");
 
     });
 };
 
-console.log("first", first)
-// Pertama memasukkan nomer ke layar
-// lalu deteksi angka yang ada di layar ini pakai inner html
-// lalu masukkan angka deteksi ke variabel dengan nama depan
-// kemudian pencet operator. ini tidak akan mendeteksi angka dilayar
-// lalu disini kita hapus angka dilayar lalu layar akan menampilkan tombol yang dipencet
-// deteksi angka ini lalu masukkan ke variabel belakang
-// operator()
-
-// FUngsi menghitung karakter titik
-function countOccurrences(str, char) {
-  return [...str].reduce((count, currentChar) =>
-    currentChar === char ? count + 1 : count, 0);
-}
 
 function operatorButton() {
     for (let i = 0; i < opt.length; i++) {
-        let opt_l = opt[i];
-        
+        let opt_l = opt[i];     
         opt_l.addEventListener("click", () => {
             let value = screen.textContent;
             console.log("ada operatorButton")
@@ -93,15 +65,12 @@ function operatorButton() {
                 operator = opt_l.textContent;
                 resetScreen = true;
                 console.log("first", first);
-
             } else if (first !== null) {
                 second = Number(value);
                 console.log("second", numCurrentSecond);
-                // Bagaimana cara mengclean screen?
                 value = "0";
                 resetScreen = true;
-            }
-            
+            }      
             if (opt_l.textContent !== "="){
                 optVar = opt_l.textContent
                 console.log("optVar:", optVar)
@@ -118,14 +87,7 @@ function operatorButton() {
                 first = null;
                 second= null;
             }
-            console.log("sedang pencet ", opt_l.textContent)
-
-  
-
         })
-
-        console.log("Ubah first dan second", first, second)
-
     }
 }
 
@@ -172,5 +134,5 @@ ac.addEventListener("click", () => {
 })
 
 buttonNum()
-// decimal()
+decimalButton()
 operatorButton()
