@@ -80,11 +80,16 @@ function operatorButton() {
                 console.log("optVar:", optVar)
             } else if (opt_l.textContent === '=') {
                 if (optVar === "+") {
-                    add(first, second)
+                    add(first, second);
                 } else if (optVar === "-") {
-                    subtract(first, second)
+                    subtract(first, second);
+                } else if (optVar === "x") {
+                    multiply(first, second);
+                } else if (optVar == ":") {
+                    divide(first, second);
                 }
-                
+                first = null;
+                second= null;
             }
             console.log("sedang pencet ", opt_l.textContent)
 
@@ -108,6 +113,24 @@ function subtract(first, second) {
     screen.textContent = result;
     console.log("fungsi subract terpanggil")
 }
+
+function multiply(first, second) {
+    let result = first * second;
+    screen.textContent = result;
+    console.log("fungsi multiply terpanggil")
+}
+
+function divide(first, second) {
+    let result;
+    if (first === 0 || second === 0) {
+        result = 0
+    } else {
+        result = first / second
+    }
+    screen.textContent = result;
+    console.log("fungsi divide terpanggil")
+}
+
 
 function appendNumber(num) {
     screen.textContent += num;
