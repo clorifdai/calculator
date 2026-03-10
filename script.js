@@ -65,31 +65,53 @@ function operatorButton() {
                 operator = opt_l.textContent;
                 resetScreen = true;
                 console.log("first", first);
-            } else if (first !== null) {
+            } else if (first !== null && second == null) {
                 second = Number(value);
-                console.log("second", numCurrentSecond);
-                value = "0";
+                console.log("second", second);
                 resetScreen = true;
+            } else if (first !== null && second !== null) {
+                screen.textContent = "";
+                second = Number(value);
+                let result = calculate(first, second, optVar);
+                first = result;
+                second = null;
+                screen.textContent = result;
+                resetScreen = true;
+                console.log("Result:", result);
             }      
+
+
             if (opt_l.textContent !== "="){
                 optVar = opt_l.textContent
                 console.log("optVar:", optVar)
             } else if (opt_l.textContent === '=') {
-                if (optVar === "+") {
-                    add(first, second);
-                } else if (optVar === "-") {
-                    subtract(first, second);
-                } else if (optVar === "x") {
-                    multiply(first, second);
-                } else if (optVar == ":") {
-                    divide(first, second);
+                if (first !== null && second !== null) {
+                    let result = calculate(first, second, optVar);
+                    screen.textContent = result;
+                    first = null;
+                    second= null;
+                    optVar = null;
                 }
-                first = null;
-                second= null;
+
             }
         })
     }
 }
+
+function calculate(first, second, operator) {
+    let result;
+    if (operator === "+") {
+        result = first + second;
+    } else if (operator === "-") {
+        result = first - second;
+    } else if (operator === "x") {
+        result = first * second;
+    } else if (operator === ":") {
+        result = (second === 0) ? 0 : first /second;
+    }
+    return result.toFixed(2);
+}
+
 
 function add(first, second) {
     let result = first + second;
