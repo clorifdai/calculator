@@ -93,19 +93,22 @@ function operatorButton() {
 
 function add(first, second) {
     let result = first + second;
-    screen.textContent = result;
+    let resultLimitDecimal = result.toFixed(2);
+    screen.textContent = resultLimitDecimal;
     console.log("fungsi add terpanggil")
 }
 
 function subtract(first, second) {
     let result = first - second;
-    screen.textContent = result;
+    let resultLimitDecimal = result.toFixed(2);
+    screen.textContent = resultLimitDecimal;
     console.log("fungsi subract terpanggil")
 }
 
 function multiply(first, second) {
     let result = first * second;
-    screen.textContent = result;
+    let resultLimitDecimal = result.toFixed(2);
+    screen.textContent = resultLimitDecimal;
     console.log("fungsi multiply terpanggil")
 }
 
@@ -116,7 +119,8 @@ function divide(first, second) {
     } else {
         result = first / second
     }
-    screen.textContent = result;
+    let resultLimitDecimal = result.toFixed(2);
+    screen.textContent = resultLimitDecimal;
     console.log("fungsi divide terpanggil")
 }
 
